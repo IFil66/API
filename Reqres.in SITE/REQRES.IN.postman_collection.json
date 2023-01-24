@@ -1,0 +1,1034 @@
+{
+	"info": {
+		"_postman_id": "a5cc8e86-e728-4e36-85d4-4498f7fce5e7",
+		"name": "reqres.in",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21654200"
+	},
+	"item": [
+		{
+			"name": "LIST USERS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const PAGE = 2;\r",
+							"const PER_PAGE = 6;\r",
+							"const TOTAL = 12;\r",
+							"const TOTAL_PAGES = 2;\r",
+							"\r",
+							"const ID = [7, 8, 9, 10, 11, 12];\r",
+							"const EMAIL = [\"michael.lawson@reqres.in\", \"lindsay.ferguson@reqres.in\", \"tobias.funke@reqres.in\",\r",
+							"\"byron.fields@reqres.in\", \"george.edwards@reqres.in\", \"rachel.howell@reqres.in\"];\r",
+							"const FIRST_NAME = [\"Michael\", \"Lindsay\", \"Tobias\", \"Byron\", \"George\", \"Rachel\"];\r",
+							"const LAST_NAME = [\"Lawson\", \"Ferguson\", \"Funke\", \"Fields\", \"Edwards\", \"Howell\"];\r",
+							"const AVATAR = [\"https://reqres.in/img/faces/7-image.jpg\", \"https://reqres.in/img/faces/8-image.jpg\",\r",
+							"            \"https://reqres.in/img/faces/9-image.jpg\", \"https://reqres.in/img/faces/10-image.jpg\",\r",
+							"            \"https://reqres.in/img/faces/11-image.jpg\" ,\"https://reqres.in/img/faces/12-image.jpg\"];\r",
+							"\r",
+							"const URL = \"https://reqres.in/#support-heading\";\r",
+							"const TEXT = \"To keep ReqRes free, contributions towards server costs are appreciated!\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check HEADER\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.page).to.eql(PAGE);\r",
+							"    pm.expect(jsonData.per_page).to.eql(PER_PAGE);\r",
+							"    pm.expect(jsonData.total).to.eql(TOTAL);\r",
+							"    pm.expect(jsonData.total_pages).to.eql(TOTAL_PAGES);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].id).to.eql(ID[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check E-MAIL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].email).to.eql(EMAIL[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check FIRST_NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].first_name).to.eql(FIRST_NAME[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check LAST_NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].last_name).to.eql(LAST_NAME[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check AVATAR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].avatar).to.eql(AVATAR[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check SUPPORT\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.support.url).to.eql(URL);\r",
+							"    pm.expect(jsonData.support.text).to.eql(TEXT);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users?page=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const ID = 2;\r",
+							"const EMAIL = \"janet.weaver@reqres.in\";\r",
+							"const FIRST_NAME = \"Janet\";\r",
+							"const LAST_NAME = \"Weaver\";\r",
+							"const AVATAR = \"https://reqres.in/img/faces/2-image.jpg\";\r",
+							"\r",
+							"const URL = \"https://reqres.in/#support-heading\";\r",
+							"const TEXT = \"To keep ReqRes free, contributions towards server costs are appreciated!\";\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.id).to.eql(ID)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check E-MAIL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.email).to.eql(EMAIL)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check FIRST_NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.first_name).to.eql(FIRST_NAME)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check LAST_NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.last_name).to.eql(LAST_NAME)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check AVATAR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.avatar).to.eql(AVATAR)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check SUPPORT\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.support.url).to.eql(URL);\r",
+							"    pm.expect(jsonData.support.text).to.eql(TEXT);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE USER NOT FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users/23",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST RESOURCE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const PAGE = 1;\r",
+							"const PER_PAGE = 6;\r",
+							"const TOTAL = 12;\r",
+							"const TOTAL_PAGES = 2;\r",
+							"\r",
+							"const ID = [1, 2, 3, 4, 5, 6];\r",
+							"const NAME = [\"cerulean\", \"fuchsia rose\", \"true red\", \"aqua sky\", \"tigerlily\", \"blue turquoise\"];\r",
+							"const YEAR = [2000, 2001, 2002, 2003, 2004, 2005];\r",
+							"const COLOR = [\"#98B2D1\", \"#C74375\", \"#BF1932\", \"#7BC4C4\", \"#E2583E\", \"#53B0AE\"];\r",
+							"const PANTONE_VALUE = [\"15-4020\", \"17-2031\", \"19-1664\", \"14-4811\", \"17-1456\" ,\"15-5217\"];\r",
+							"\r",
+							"const URL = \"https://reqres.in/#support-heading\";\r",
+							"const TEXT = \"To keep ReqRes free, contributions towards server costs are appreciated!\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check HEADER\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.page).to.eql(PAGE);\r",
+							"    pm.expect(jsonData.per_page).to.eql(PER_PAGE);\r",
+							"    pm.expect(jsonData.total).to.eql(TOTAL);\r",
+							"    pm.expect(jsonData.total_pages).to.eql(TOTAL_PAGES);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].id).to.eql(ID[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].name).to.eql(NAME[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check YEAR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].year).to.eql(YEAR[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check COLOR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].color).to.eql(COLOR[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check PANTONE_VALUE\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].pantone_value).to.eql(PANTONE_VALUE[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check SUPPORT\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.support.url).to.eql(URL);\r",
+							"    pm.expect(jsonData.support.text).to.eql(TEXT);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/unknown",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"unknown"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE RESOURCE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const ID = 2;\r",
+							"const NAME = \"fuchsia rose\";\r",
+							"const YEAR = 2001;\r",
+							"const COLOR = \"#C74375\";\r",
+							"const PANTONE_VALUE = \"17-2031\";\r",
+							"\r",
+							"const URL = \"https://reqres.in/#support-heading\";\r",
+							"const TEXT = \"To keep ReqRes free, contributions towards server costs are appreciated!\";\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.id).to.eql(ID);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.name).to.eql(NAME);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check YEAR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.year).to.eql(YEAR);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check COLOR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.color).to.eql(COLOR);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check PANTONE_VALUE\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.pantone_value).to.eql(PANTONE_VALUE);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check SUPPORT\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.support.url).to.eql(URL);\r",
+							"    pm.expect(jsonData.support.text).to.eql(TEXT);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/unknown/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"unknown",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE RESOURCE NOT FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/unknown/23",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"unknown",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// CREATED_AT needs actualize before send request\r",
+							"const CREATED_AT = pm.environment.get(\"DATE_AND_TIME\");\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(request.data.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check JOB\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.job).to.eql(request.data.job);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has ID\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has DATE ant TIME created\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"createdAt\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check CREATED_AT\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(CREATED_AT);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE - PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UPDATED_AT needs actualize before send request\r",
+							"const UPDATED_AT = pm.environment.get(\"DATE_AND_TIME\");\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(request.data.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check JOB\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.job).to.eql(request.data.job);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has DATE and TIME updeted\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check UPDATED_AT\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(UPDATED_AT);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "morpheus",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "job",
+							"value": "zion resident",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE - PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// UPDATED_AT needs actualize before send request\r",
+							"const UPDATED_AT = pm.environment.get(\"DATE_AND_TIME\");\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(request.data.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check JOB\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.job).to.eql(request.data.job);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has DATE and TIME updeted\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check UPDATED_AT\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(UPDATED_AT);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "morpheus",
+							"type": "text"
+						},
+						{
+							"key": "job",
+							"value": "zion resident",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "morpheus",
+							"type": "text"
+						},
+						{
+							"key": "job",
+							"value": "zion resident",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER - SUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const ID = 4;\r",
+							"const TOKEN = \"QpwL5tke4Pnpja7X4\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(ID);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check TOKEN\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.token).to.eql(TOKEN);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "eve.holt@reqres.in",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pistol",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER - UNSUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const ERROR = \"Missing password\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.eql(ERROR);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "sydney@fife",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN - SUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const TOKEN = \"QpwL5tke4Pnpja7X4\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check TOKEN\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.token).to.eql(TOKEN);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "eve.holt@reqres.in",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "cityslicka",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN - UNSUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const ERROR = \"Missing password\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check TOKEN\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.eql(ERROR);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "peter@klaven",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELAYED RESPONSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const PAGE = 1;\r",
+							"const PER_PAGE = 6;\r",
+							"const TOTAL = 12;\r",
+							"const TOTAL_PAGES = 2;\r",
+							"\r",
+							"const ID = [1, 2, 3, 4, 5, 6];\r",
+							"const EMAIL = [\"george.bluth@reqres.in\", \"janet.weaver@reqres.in\", \"emma.wong@reqres.in\", \"eve.holt@reqres.in\",\r",
+							"\"charles.morris@reqres.in\", \"tracey.ramos@reqres.in\"];\r",
+							"const FIRST_NAME = [\"George\", \"Janet\", \"Emma\", \"Eve\", \"Charles\", \"Tracey\"];\r",
+							"const LAST_NAME = [\"Bluth\", \"Weaver\", \"Wong\", \"Holt\", \"Morris\", \"Ramos\"];\r",
+							"const AVATAR = [\"https://reqres.in/img/faces/1-image.jpg\", \"https://reqres.in/img/faces/2-image.jpg\",\r",
+							"            \"https://reqres.in/img/faces/3-image.jpg\", \"https://reqres.in/img/faces/4-image.jpg\",\r",
+							"            \"https://reqres.in/img/faces/5-image.jpg\" ,\"https://reqres.in/img/faces/6-image.jpg\"];\r",
+							"\r",
+							"const URL = \"https://reqres.in/#support-heading\";\r",
+							"const TEXT = \"To keep ReqRes free, contributions towards server costs are appreciated!\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check HEADER\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.page).to.eql(PAGE);\r",
+							"    pm.expect(jsonData.per_page).to.eql(PER_PAGE);\r",
+							"    pm.expect(jsonData.total).to.eql(TOTAL);\r",
+							"    pm.expect(jsonData.total_pages).to.eql(TOTAL_PAGES);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].id).to.eql(ID[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check E-MAIL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].email).to.eql(EMAIL[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check FIRST_NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].first_name).to.eql(FIRST_NAME[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check LAST_NAME\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].last_name).to.eql(LAST_NAME[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check AVATAR\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for(let i = 0; i <= 5; i++) {\r",
+							"        pm.expect(jsonData.data[i].avatar).to.eql(AVATAR[i])\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check SUPPORT\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.support.url).to.eql(URL);\r",
+							"    pm.expect(jsonData.support.text).to.eql(TEXT);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users?delay=3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "delay",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://reqres.in"
+		}
+	]
+}
