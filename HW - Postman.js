@@ -1,4 +1,4 @@
-﻿http://162.55.220.72:5005/first
+﻿// http://162.55.220.72:5005/first
 
 //3. Проверить, что в body приходит правильный string.
 var expectedResult = "This is the first responce from server!ss";
@@ -8,10 +8,10 @@ pm.test("Body is correct", function () {
     pm.expect(responseData).to.eql(expectedResult);
 });
 
-__________________
+// __________________
 
 
-http://162.55.220.72:5005/user_info_3
+// http://162.55.220.72:5005/user_info_3
 
 // 3. Спарсить response body в json.
 var responseData = pm.response.json();
@@ -63,9 +63,9 @@ let res_u_salary_1_5_year = +responseData.family.u_salary_1_5_year;
 pm.expect(res_u_salary_1_5_year).to.eql(reqSalary * 4);
 });
 
-__________________
+// __________________
 
-http://162.55.220.72:5005/object_info_3
+// http://162.55.220.72:5005/object_info_3
 
 //3. Спарсить response body в json.
 var responseData = pm.response.json();
@@ -111,9 +111,9 @@ pm.test("Dog's age-2", function () {
     pm.expect(responseData.family.pets.dog.age).to.eql(4);
 });
 
-__________________
+// __________________
 
-http://162.55.220.72:5005/object_info_4
+// http://162.55.220.72:5005/object_info_4
 
 //3. Спарсить response body в json.
 var responseData = pm.response.json();
@@ -177,9 +177,9 @@ for (let i = 0; i < 3; i++){
     console.log(+responseData.salary[i]);
 }
 
-__________________
+// __________________
 
-http://162.55.220.72:5005/user_info_2
+// http://162.55.220.72:5005/user_info_2
 
 // 1. Вставить параметр salary из окружения в request
 // 2. Вставить параметр age из окружения в age
@@ -268,7 +268,3 @@ let personData = Object.keys(responseData.person);
 for (let i = 0; i < totalElements; ++i) {
     console.log(personData[i]);
 }
-
-
-
-
