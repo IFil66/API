@@ -9,18 +9,16 @@
   <img src="https://github.com/btd1337/urutau-icons/blob/master/apps/48/postman.svg" title="Postman" alt="Postman" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" title="Java" alt="Java" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/intellij/intellij-original.svg" title="IntelliJ IDEA" alt="IntelliJ IDEA" width="40" height="40"/>&nbsp;
 </div>
 
 __Коротко о содержании:__
 - В файле __HW - Postman (Tasks).txt__ находятся задачи по отправке GET и POST запросов с проведением автотестов по получаемым от серваера ответам.   
 - В файле __HW - Postman.txt__ - реализация задач с приведением кода JavaScript в формате простого текста для удобства его чтения.   
-- В файле __HW.postman_collection.json__ - файл с коллекцией, который можно импортировать в Postman...
+- В файле __HW.postman_collection.json__ - файл с коллекцией, который можно импортировать в Postman для более детального ознакомления.   
 
-
- 
-Homework of Postman.txt - моё решение в Postman с использованием встроенных Snippets + часть задач решена добавлением JS-кода.
-
-Homework.postman_collection.json - оригинал решения задачи, предназначенный для импорта в Postman.
+В папке __Reqres.in SITE__ приведена реализация автотестов API с тестового сайта [reqres.in](https://reqres.in/).   
+Внутри Reqres.in SITE располагаетя файл коллекции __REQRES.IN.postman_collection.json__ для импорта в Postman.   
+В папке __Java__ можно будет найти файл реализации автотестов тестового API reqres.in на языке программирования Java - __ReqrestApiTests.java__, а также папку с файлами, содержащими POJO-классы, используемые для сериализации и десериализации JSON.  
+В разработке тестов API на Java использовались такие фреймворки как Rest Assured, Jackson, AssertJ.
 
 ---
