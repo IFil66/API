@@ -2,7 +2,7 @@ name: Testing capital.com
 
 on: 
   schedule:
-    - cron: "38 6 * * *"
+    - cron: "39 6 * * *"
   
 jobs:
   tests:
